@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
+
+    <title>Joël VOIGNIER - Portfolio</title>
+
+    <link rel="icon" href="logos/logo.png" type="image/x-icon">
+
     <style>
         body {
-            background-color: wheat;
+            background-color: #f6edbf;
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
@@ -35,27 +39,99 @@
             display: flex;
             margin: 50px;
         }
-        .mycontainer > div {
-            width:50%;
+        .mycontainer > #description {
+            width:70%;
         }
     </style>
 </head>
+
 <body>
-    <h1>Joël VOIGNIER</h1>
-    <h2>PROGRAMMEUR GAMEPLAY</h2>
-    <h3>/!\ Le site est actuellement en cours de création. Référez-vous à l'ancien site s'il vous plaît. /!\</h3>
-    <a href="https://joelvoignier.myportfolio.com/work" target="_blank">Lien vers l'ancien site</a>
-    
-    <div class="mycontainer">
-    
-        <div>
-            <p>Jeu de plateforme et d'exploration, <b>The Blue Path</b> propose une odyssée d'une gouttelette à travers de nombreux paysages minéraux.<br>Une goutte d'eau s'aventure dans un voyage à travers une faille géologique vers une nappe phréatique profondément cachée.<br><br>C'est une vertical slice réalisé comme projet indépendant sur <b>Unreal Engine 5</b>.<br><br>J'ai travaillé dessus en tant que <b>seul et unique développeur</b> parmis une équipe composée de quatre autres personnes. J'ai donc développé tous les aspects du prototype, du gameplay</b> aux différents <b>systèmes</b> en passant par l'</b>UI</b>, le<b> gamefeel</b>, etc.<br><br>Vous pouvez retrouver plus d'informations sur <a href="https://sibyllion.itch.io/the-blue-path" target="_blank" style="font-size: 16px;">la page itch.io du jeu.</a></p>
-        </div>
-
-        <div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/TCqAGVPhp0M?si=rJvSwGAVpFAPpjQb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
+    <div style="position: relative; display: flex;">
+        <h1 style="position: relative; align-self: center; width: 100%;">Joël VOIGNIER</h1>
+        <button  style="position:absolute; align-self: center; padding-top: 6px;" onclick="switchLanguage()"><img id="switchLanguageImg" width="70px" height="40px"></button>
     </div>
+
+    <div style="margin-top: 10px;">
+        <h2 id="title">PROGRAMMEUR GAMEPLAY</h2>
+        <h3 id="warning">/!\ Le site est actuellement en cours de création. Référez-vous à l'ancien site s'il vous plaît. /!\</h3>
+        <a id="previousLink" href="https://joelvoignier.myportfolio.com/work" target="_blank">Lien vers l'ancien site</a>
+        
+        <div class="mycontainer">
+            
+            <div class="description">
+                <p id="description">Jeu de plateforme et d'exploration, <b>The Blue Path</b> propose une odyssée d'une gouttelette à travers de nombreux paysages minéraux.<br>Une goutte d'eau s'aventure dans un voyage à travers une faille géologique vers une nappe phréatique profondément cachée.<br><br>C'est une vertical slice réalisé comme projet indépendant sur <b>Unreal Engine 5</b>.<br><br>J'ai travaillé dessus en tant que <b>seul et unique développeur</b> parmis une équipe composée de quatre autres personnes. J'ai donc développé tous les aspects du prototype, du gameplay</b> aux différents <b>systèmes</b> en passant par l'</b>UI</b>, le<b> gamefeel</b>, etc.<br><br>Vous pouvez retrouver plus d'informations sur <a href="https://sibyllion.itch.io/the-blue-path" target="_blank" style="font-size: 16px;">la page itch.io du jeu.</a></p>
+            </div>
+            
+            <div>
+                <iframe width="420" height="236" src="https://www.youtube.com/embed/TCqAGVPhp0M?si=rJvSwGAVpFAPpjQb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            
+        </div>
+    </div>
+
 </body>
+
+<script>
+    // Translation depending of the browser language
+    var translateTo = navigator.language || navigator.userLanguage;
+    var defaultLanguage = translateTo;
+
+    // Get the button img for translation
+    var switchLanguageImg = document.getElementById('switchLanguageImg');
+    
+    // Function to translate the page depending of the language
+    function translateLanguage(language)
+    {
+        if (language === 'fr-FR')
+        {
+            document.getElementById('title').innerHTML = 'PROGRAMMEUR GAMEPLAY';
+            document.getElementById('warning').innerHTML = '/!\\ Le site est actuellement en cours de création. Référez-vous à l\'ancien site s\'il vous plaît. /!\\</h3>';
+            document.getElementById('previousLink').innerHTML = 'Lien vers l\'ancien site';
+            document.getElementById('description').innerHTML = 'Jeu de plateforme et d\'exploration, <b>The Blue Path</b> propose une odyssée d\'une gouttelette à travers de nombreux paysages minéraux.<br>Une goutte d\'eau s\'aventure dans un voyage à travers une faille géologique vers une nappe phréatique profondément cachée.<br><br>C\'est une vertical slice réalisé comme projet indépendant sur <b>Unreal Engine 5</b>.<br><br>J\'ai travaillé dessus en tant que <b>seul et unique développeur</b> parmis une équipe composée de quatre autres personnes. J\'ai donc développé tous les aspects du prototype, du gameplay</b> aux différents <b>systèmes</b> en passant par l\'</b>UI</b>, le<b> gamefeel</b>, etc.<br><br>Vous pouvez retrouver plus d\'informations sur <a href="https://sibyllion.itch.io/the-blue-path" target="_blank" style="font-size: 16px;">la page itch.io du jeu.</a>';
+            
+            if (defaultLanguage === 'en-US')
+            {
+                switchLanguageImg.src = 'flags/US.png';
+            }
+            else
+            {
+                switchLanguageImg.src = 'flags/EN.png';
+            }
+        }
+        else
+        {
+            document.getElementById('title').innerHTML = 'GAMEPLAY PROGRAMMER';
+            document.getElementById('warning').innerHTML = '/!\\ The site is currently under construction. Please refer to the old site. /!\\</h3>';
+            document.getElementById('previousLink').innerHTML = 'Link to the old site';
+            document.getElementById('description').innerHTML = 'An exploration platformer, <b>The Blue Path</b> takes a droplet on an odyssey through a variety of mineral landscapes.<br>A drop of water ventures across a geological fault to a deeply hidden water table.<br><br>This is a vertical slice produced as an independent project on <b>Unreal Engine 5</b>.<br><br>I worked on it as the <b>one and only developer</b> in a team of four other people. So I developed all aspects of the prototype, from <b>gameplay</b> to the various <b>systems</b>, including the <b>UI</b>, <b>gamefeel</b> and so on.<br><br>You can find more information on <a href="https://sibyllion.itch.io/the-blue-path" target="_blank" style="font-size: 16px;">itch.io page.</a>';
+
+            switchLanguageImg.src = 'flags/FR.png';
+        }
+    }
+
+    function switchLanguage()
+    {
+        if (translateTo === 'fr-FR')
+        {
+            if (defaultLanguage === 'en-US')
+            {
+                translateTo = 'en-US';
+            }
+            else
+            {
+                translateTo = 'en-EN';
+            }
+        }
+        else
+        {
+            translateTo = 'fr-FR';
+            switchLanguageImg.src = 'flags/FR.png';
+        }
+
+        translateLanguage(translateTo);
+    }
+
+    window.onload = translateLanguage(translateTo);
+</script>
+
 </html>
